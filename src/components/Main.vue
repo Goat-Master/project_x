@@ -45,19 +45,17 @@ export default {
       name: "",
       pin: "",
       numberRules: [
-        (v) => /\d/.test(v) || "Coloque números apenas",
+        (v) => /^\d+$/.test(v) || "Coloque números apenas",
         (v) => v.length === 4 || "O pin apenas é composto por 4 algarismos",
       ],
       accounts: [
         {
           name: "zé",
           pin: "1939",
-          amount: 1000,
         },
         {
           name: "bruno",
           pin: "1982",
-          amount: 9000,
         },
       ],
     };
@@ -65,7 +63,6 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        console.log(this.name + " | " + this.pin);
         for (let i = 0; i <= this.accounts.length; i++) {
           if (
             this.name === this.accounts[i].name &&
