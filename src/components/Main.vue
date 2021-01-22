@@ -63,14 +63,18 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        for (let i = 0; i <= this.accounts.length; i++) {
+        for (let i = 0; i < this.accounts.length; i++) {
           if (
             this.name === this.accounts[i].name &&
             this.pin === this.accounts[i].pin
           ) {
             this.$router.push(this.name);
+            console.log("worked");
+            return;
           }
         }
+        alert("Wrong credentials");
+        this.$refs.form.reset();
       }
     },
   },
